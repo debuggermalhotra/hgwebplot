@@ -16,9 +16,9 @@ def view(viewid):
 
 @app.route('/<viewid>', methods = ['POST'])
 def update(viewid):
-    print request.json
+    print (request.json)
     r = requests.put('https://hgwebplot.firebaseio.com/{}/vega.json'.format(viewid), data = json.dumps(request.json))
-    print r.content
+    print (r.content)
     emit('hg_update', request.json, room = viewid, namespace = '/hg')
     return ''
 
